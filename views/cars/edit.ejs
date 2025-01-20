@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit Car</title>
+</head>
+<body>
+	<h1>Edit Car</h1>
+	<form action="/cars/<%= car._id %>?_method=PUT" method="POST">
+		<input type="text" name="make" value="<%= car.make %>" required/>
+		<input type="text" name="model" value="<%= car.model %>" required/>
+		<input type="number" name="year" value="<%= car.year %>" required/>
+		<input type="number" name="price" value="<%= car.price %>" required/>
+		<button type="submit">Update Car</button>
+	  </form>
+      <a href="/cars">Back to List</a>
+</body>
+</html>

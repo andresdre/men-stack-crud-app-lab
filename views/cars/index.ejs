@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>All Cars</h1>
+	<ul>
+    <% car.forEach(car => { %>
+    <li>
+      <% car.make %> <% car.model %> (<% car.year %>) <% car.price %>
+      <a href="/cars/edit/<%= car._id  %>">Edit</a>
+      <form action="/cars/delete/<%= car._id %>?_method=DELETE" method="POST" style="display: inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+		<% }) %>
+	</ul>
+    <a href="/cars/new">Add a New Car</a>
+</body>
+</html>
