@@ -8,11 +8,11 @@
 <body>
 	<h1>All Cars</h1>
 	<ul>
-    <% car.forEach(car => { %>
+    <% cars.forEach(car => { %>
     <li>
-      <% car.make %> <% car.model %> (<% car.year %>) <% car.price %>
-      <a href="/cars/edit/<%= car._id  %>">Edit</a>
-      <form action="/cars/delete/<%= car._id %>?_method=DELETE" method="POST" style="display: inline;">
+      <%= car.make %> <%= car.model %> (<%= car.year %>) <%= car.price %>
+      <a href="/cars/<%= car._id  %>/edit">Edit</a>
+      <form action="/cars/<%= car._id %>?_method=DELETE" method="POST" style="display: inline;">
         <button type="submit">Delete</button>
       </form>
     </li>

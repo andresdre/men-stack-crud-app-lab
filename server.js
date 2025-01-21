@@ -4,7 +4,7 @@ dotenv.config()
 
 const express = require('express')
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
+//const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
 const Car = require('./models/car')
@@ -21,7 +21,7 @@ mongoose.connection.on('connected', function(){
 })
 
 app.set('view engine', 'ejs')
-app.use(bodyParser.urlencoded({ extended: true }))
+//app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(methodOverride("_method"));
@@ -42,17 +42,17 @@ app.post('/cars', async function(req, res){
     }
 })
 
-app.get('/cars/index', async function(req, res){
+app.get('/cars/', async function(req, res){
 	const cars = await Car.find();
 	res.render('cars/index', {cars});
 });
 
 app.get('/cars/:id/edit', async function(req, res){
     const car = await Car.findById(req.params.id);
-        res.render('edit', {car});
+        res.render('cars/edit', {car});
 });
 
-app.put("/cars/:id", async (req, res) => {
+app.put("/cars/:id/", async (req, res) => {
     try {
         const {make, model, year, price} = req.body;
         await Car.findByIdAndUpdate(req.params.id, {make, model, year, price});
